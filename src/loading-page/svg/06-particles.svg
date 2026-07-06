@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%" class="particles-svg" aria-hidden="true" role="presentation">
+  <g fill="#ffffff" class="particles-group">
+    <!-- Row 1 -->
+    <circle cx="100" cy="150" r="1.2" opacity="0.3" class="p-drift-1" />
+    <circle cx="280" cy="80" r="1.5" opacity="0.15" class="p-drift-2" />
+    <circle cx="450" cy="220" r="0.8" opacity="0.4" class="p-drift-3" />
+    <circle cx="720" cy="110" r="1.8" opacity="0.25" class="p-drift-4" />
+    <circle cx="890" cy="180" r="1.0" opacity="0.35" class="p-drift-5" />
+
+    <!-- Row 2 -->
+    <circle cx="150" cy="450" r="1.4" opacity="0.2" class="p-drift-6" />
+    <circle cx="320" cy="380" r="0.9" opacity="0.3" class="p-drift-7" />
+    <circle cx="680" cy="480" r="1.6" opacity="0.15" class="p-drift-8" />
+    <circle cx="850" cy="390" r="1.1" opacity="0.45" class="p-drift-9" />
+
+    <!-- Row 3 -->
+    <circle cx="80" cy="720" r="1.3" opacity="0.35" class="p-drift-10" />
+    <circle cx="250" cy="640" r="1.0" opacity="0.25" class="p-drift-11" />
+    <circle cx="510" cy="780" r="1.7" opacity="0.15" class="p-drift-12" />
+    <circle cx="790" cy="690" r="0.9" opacity="0.4" class="p-drift-13" />
+    <circle cx="920" cy="750" r="1.4" opacity="0.3" class="p-drift-14" />
+
+    <!-- Row 4 -->
+    <circle cx="210" cy="910" r="1.1" opacity="0.2" class="p-drift-15" />
+    <circle cx="430" cy="880" r="1.5" opacity="0.35" class="p-drift-16" />
+    <circle cx="670" cy="930" r="0.8" opacity="0.4" class="p-drift-17" />
+    <circle cx="860" cy="860" r="1.9" opacity="0.18" class="p-drift-18" />
+  </g>
+</svg>

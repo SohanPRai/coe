@@ -3,22 +3,23 @@
 ## Metadata
 - **Page**: loading-page
 - **Sequence Number**: 01
-- **Visual Description**: A premium, futuristic geometric logo representing the Center of Excellence (CoE). It consists of an outer hexagonal shield with double borders, enclosing an inner abstract network of interconnected engineering nodes forming a stylized "C".
+- **Visual Description**: A custom premium geometric vector wordmark for the letters "COE", styled with thin lines, rounded caps, and precise layout for path drawing animations.
 
 ## Prompt Used
 ```text
-Create a clean, scalable vector (SVG) logo representing a "Center of Excellence" (CoE) for an engineering college.
-The logo should have a premium academic-tech feel.
-Design elements:
-- An outer hexagonal shield structure with dual-line borders.
-- An inner abstract emblem representing a combination of nodes, lines, and gears forming a stylized letter 'C'.
-- Use gold accents (#eab308) and crisp lines.
-- Set viewBox to "0 0 200 200" and ensure it is centered.
-- Include proper class names and ids for stroke drawing animations (e.g. 'stroke-dasharray', 'stroke-dashoffset').
-- Keep it clean, minimal, and fully modern. No unnecessary wrappers or styling attributes.
+Create a clean, scalable vector (SVG) wordmark containing the letters "COE".
+Design details:
+- Clean, modern, high-end geometric typography.
+- Letter 'C': A perfect open circle arc on the left.
+- Letter 'O': A complete concentric circle in the middle.
+- Letter 'E': A clean vertical spine with three horizontal parallel arms on the right.
+- Set viewBox to "0 0 300 100" and ensure it is vertically and horizontally centered.
+- Use a stroke width of 4 with rounded caps (stroke-linecap="round").
+- Outline the path coordinates explicitly so that stroke-dashoffset animations can draw the letters smoothly.
+- Avoid fills; use only white (#ffffff) or silver strokes for the letters.
 ```
 
 ## Regeneration Notes
-- Manual adjustments made to path data to ensure the stroke drawing animation runs cleanly on individual paths.
-- Added accessibility tags: `role="img"` and `aria-label="Center of Excellence Emblem"`.
-- Uses stroke width `2` with rounded caps for a smooth, high-fidelity appearance.
+- Configured individual letters using separate `<path>` tags with descriptive ids: `letter-c`, `letter-o`, `letter-e-spine`, `letter-e-top`, `letter-e-mid`, and `letter-e-bot`.
+- Bounded text lines to standard heights `y = 18` to `82` for a modern square proportion.
+- Added accessibility tags: `role="img"` and `aria-label="COE custom wordmark"`.

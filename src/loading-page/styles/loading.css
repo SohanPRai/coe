@@ -1,10 +1,10 @@
-/* Page-specific styles for loading page */
+/* CSS for refined cinematic loading page layout & animations */
 
-.loading-container {
+.loading-viewport {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #030712;
+  background-color: #000000;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -12,115 +12,151 @@
   justify-content: center;
 }
 
-/* Background Layers */
-.grid-container {
+/* Background Vignette Frame */
+.vignette-overlay {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 5;
+  pointer-events: none;
 }
 
-.glow-container {
+/* Center spotlight background glow */
+.background-glow {
   position: absolute;
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
   pointer-events: none;
   opacity: 0;
-  animation: glowFadeIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+  animation: glowFadeIn 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes glowFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Floating Particles (Scene 1: 0s - 1.5s fade in, 20s drift cycle) */
+.particles-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  animation: particlesFadeIn 1.5s ease-out forwards;
+}
+
+.particles-group {
+  transform-origin: center;
+  animation: particlesDriftCycle 25s ease-in-out infinite;
+}
+
+@keyframes particlesFadeIn {
   to {
     opacity: 1;
   }
 }
 
-/* Foreground Content */
-.content-container {
+@keyframes particlesDriftCycle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-25px) translateX(15px) scale(1.02);
+  }
+}
+
+/* Individual particle floating variations for parallax-like drift depth */
+.particles-group circle:nth-child(2n) {
+  animation: microFloat 6s ease-in-out infinite alternate;
+}
+.particles-group circle:nth-child(3n) {
+  animation: microFloatInverse 8s ease-in-out infinite alternate;
+}
+
+@keyframes microFloat {
+  0% { transform: translateY(0px) translateX(0px); }
+  100% { transform: translateY(-8px) translateX(6px); }
+}
+
+@keyframes microFloatInverse {
+  0% { transform: translateY(0px) translateX(0px); }
+  100% { transform: translateY(6px) translateX(-8px); }
+}
+
+/* Display Elements Layout */
+.cinematic-content {
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 100%;
+  max-width: 600px;
 }
 
-.logo-wrapper {
-  width: 160px;
-  height: 160px;
-  margin-bottom: 24px;
+/* Bounding box for COE wordmark */
+.logo-container {
+  width: 260px;
+  height: 86px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0.95);
-  animation: logoScaleUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 2.2s;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes logoScaleUp {
-  to {
-    transform: scale(1.05);
-  }
+/* Scene 3: Logo translates upward at 3s */
+.logo-translated {
+  transform: translateY(-60px);
 }
 
-.title-wrapper {
-  width: 280px;
+/* Typography wraps */
+.title-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(32px);
+  width: 100%;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
-  opacity: 0;
-  animation: titleFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 2.5s;
 }
 
-@keyframes titleFadeIn {
-  to {
-    opacity: 1;
-  }
+.divider-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(60px);
+  width: 120px;
+  height: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.subtitle-text {
-  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  color: #94a3b8;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin-bottom: 36px;
-  opacity: 0;
-  animation: subtitleFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 2.8s;
-  padding-left: 4px; /* Balance letter-spacing offset */
-}
-
-@keyframes subtitleFadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Progress Section */
-.progress-wrapper {
-  opacity: 0;
-  animation: progressFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 3.1s;
-}
-
-@keyframes progressFadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Glassmorphic elements */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  border-radius: 12px;
+.college-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(105px);
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
