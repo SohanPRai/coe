@@ -1,0 +1,126 @@
+/* Page-specific styles for loading page */
+
+.loading-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #030712;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background Layers */
+.grid-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.glow-container {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  animation: glowFadeIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+}
+
+@keyframes glowFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Foreground Content */
+.content-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo-wrapper {
+  width: 160px;
+  height: 160px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.95);
+  animation: logoScaleUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 2.2s;
+}
+
+@keyframes logoScaleUp {
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.title-wrapper {
+  width: 280px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: titleFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 2.5s;
+}
+
+@keyframes titleFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.subtitle-text {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #94a3b8;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: subtitleFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 2.8s;
+  padding-left: 4px; /* Balance letter-spacing offset */
+}
+
+@keyframes subtitleFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Progress Section */
+.progress-wrapper {
+  opacity: 0;
+  animation: progressFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 3.1s;
+}
+
+@keyframes progressFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Glassmorphic elements */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 12px;
+}

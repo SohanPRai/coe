@@ -1,0 +1,98 @@
+/* Staggered Stroke Drawing Animations for CoE Logo */
+
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseCore {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.8));
+  }
+}
+
+.draw-path {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawStroke 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered delays for cinematic feel */
+#outer-hexagon {
+  animation-delay: 0.2s;
+  animation-duration: 2.2s;
+}
+
+#inner-hexagon {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation-delay: 0.5s;
+  animation-duration: 2s;
+}
+
+#circuit-main {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation-delay: 0.9s;
+  animation-duration: 1.8s;
+}
+
+#branch-top {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation-delay: 1.3s;
+  animation-duration: 1.2s;
+}
+
+#branch-bottom {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation-delay: 1.5s;
+  animation-duration: 1.2s;
+}
+
+#branch-mid {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation-delay: 1.6s;
+  animation-duration: 1.2s;
+}
+
+/* Node fade-in */
+#circuit-c circle {
+  opacity: 0;
+  animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#circuit-c circle:nth-child(n+5) {
+  animation-delay: 1.8s;
+}
+
+#circuit-c circle:nth-child(n+7) {
+  animation-delay: 2.1s;
+}
+
+/* Core pulsing node animation */
+.pulse-node {
+  transform-origin: 100px 100px;
+  animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+             pulseCore 3s ease-in-out infinite 2.4s !important;
+}
